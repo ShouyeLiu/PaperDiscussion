@@ -1,0 +1,626 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2023-05-25 Thu 17:01 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Summary of Statistical Distribution</title>
+<meta name="author" content="Shouye Liu" />
+<meta name="generator" content="Org Mode" />
+<style>
+  #content { max-width: 60em; margin: auto; }
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #e6e6e6;
+    border-radius: 3px;
+    background-color: #f2f2f2;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: auto;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    top: -8px;
+    right: 12px;
+    padding: 3px;
+    color: #555;
+    background-color: #f2f2f299;
+  }
+  pre.src:hover:before { display: inline; margin-top: 14px;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-authinfo::before { content: 'Authinfo'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .equation-container {
+    display: table;
+    text-align: center;
+    width: 100%;
+  }
+  .equation {
+    vertical-align: middle;
+  }
+  .equation-label {
+    display: table-cell;
+    text-align: right;
+    vertical-align: middle;
+  }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { }
+</style>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        displayAlign: "center",
+        displayIndent: "0em",
+
+        "HTML-CSS": { scale: 100,
+                        linebreaks: { automatic: "false" },
+                        webFont: "TeX"
+                       },
+        SVG: {scale: 100,
+              linebreaks: { automatic: "false" },
+              font: "TeX"},
+        NativeMML: {scale: 100},
+        TeX: { equationNumbers: {autoNumber: "AMS"},
+               MultLineWidth: "85%",
+               TagSide: "right",
+               TagIndent: ".8em"
+             }
+});
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS_HTML"></script>
+</head>
+<body>
+<div id="content" class="content">
+<h1 class="title">Summary of Statistical Distribution</h1>
+<div id="table-of-contents" role="doc-toc">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents" role="doc-toc">
+<ul>
+<li><a href="#org4b1a59b">1. Useful function</a>
+<ul>
+<li><a href="#org354c776">1.1. Power function</a></li>
+<li><a href="#org07b9d99">1.2. Exponential function</a></li>
+<li><a href="#org813ced9">1.3. Logrithm function</a></li>
+<li><a href="#org797a7de">1.4. Gamma function</a></li>
+</ul>
+</li>
+<li><a href="#orgfcbb1c0">2. Univariate Distribution relationship</a></li>
+<li><a href="#orge13531b">3. Relationship between discrete and continuous distribution</a>
+<ul>
+<li><a href="#org5fadd74">3.1. Table 1. Relationship abbreviation</a></li>
+</ul>
+</li>
+<li><a href="#org84415c1">4. Continuous distribution</a>
+<ul>
+<li><a href="#orgbbb59aa">4.1. Exponential distribution</a></li>
+<li><a href="#org4d5e914">4.2. Gamma distribution</a></li>
+<li><a href="#orge8d27ed">4.3. Normal distribution</a>
+<ul>
+<li><a href="#org3238a70">4.3.1. The derivative of normal distribution (Ref: Tim )</a></li>
+<li><a href="#org7aef59d">4.3.2. Other useful materials</a></li>
+</ul>
+</li>
+<li><a href="#org2a0942c">4.4. \(\chi^2\) distribution</a></li>
+<li><a href="#org969641d">4.5. The relationship between normal and \(\chi^2\) distribution</a></li>
+<li><a href="#org3c16232">4.6. Noncentral \(\chi^2\) distribution</a></li>
+<li><a href="#orgb664fb6">4.7. Wishart distribution</a></li>
+</ul>
+</li>
+<li><a href="#org7269d1b">5. Discrete distribution</a>
+<ul>
+<li><a href="#orgfb2d077">5.1. Bernoulli distribution \(X \sim Bernoulli(p)\)</a></li>
+<li><a href="#org6000f6a">5.2. Binomial distribution \(X \sim Binomial(n,p)\)</a></li>
+<li><a href="#orgaf1f3a7">5.3. Possion distribution</a></li>
+</ul>
+</li>
+<li><a href="#org38b9686">6. P value distribution</a></li>
+</ul>
+</div>
+</div>
+<p>
+<a href="http://www.math.wm.edu/~leemis/chart/UDR/UDR.html">Distribution Chart</a>
+</p>
+
+<div id="outline-container-org4b1a59b" class="outline-2">
+<h2 id="org4b1a59b"><span class="section-number-2">1.</span> Useful function</h2>
+<div class="outline-text-2" id="text-1">
+</div>
+<div id="outline-container-org354c776" class="outline-3">
+<h3 id="org354c776"><span class="section-number-3">1.1.</span> Power function</h3>
+<div class="outline-text-3" id="text-1-1">
+<p>
+Real functions of the form \(f(x)=x^{a}\)
+</p>
+</div>
+</div>
+<div id="outline-container-org07b9d99" class="outline-3">
+<h3 id="org07b9d99"><span class="section-number-3">1.2.</span> Exponential function</h3>
+<div class="outline-text-3" id="text-1-2">
+<p>
+\(f(x) = a^{x}\), for example, \(f(x) = e^x\).
+</p>
+</div>
+</div>
+<div id="outline-container-org813ced9" class="outline-3">
+<h3 id="org813ced9"><span class="section-number-3">1.3.</span> Logrithm function</h3>
+<div class="outline-text-3" id="text-1-3">
+<p>
+\(log_b^y = x\)
+</p>
+</div>
+</div>
+
+<div id="outline-container-org797a7de" class="outline-3">
+<h3 id="org797a7de"><span class="section-number-3">1.4.</span> Gamma function</h3>
+<div class="outline-text-3" id="text-1-4">
+<p>
+\(\Gamma(\alpha) = \int^{\infty}_0 t^{\alpha - 1} e^{-t} dt\)
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgfcbb1c0" class="outline-2">
+<h2 id="orgfcbb1c0"><span class="section-number-2">2.</span> Univariate Distribution relationship</h2>
+<div class="outline-text-2" id="text-2">
+<p>
+<a href="http://www.math.wm.edu/~leemis/chart/UDR/UDR.html">Chart for univariate distribution relationship</a>
+</p>
+</div>
+</div>
+<div id="outline-container-orge13531b" class="outline-2">
+<h2 id="orge13531b"><span class="section-number-2">3.</span> Relationship between discrete and continuous distribution</h2>
+<div class="outline-text-2" id="text-3">
+</div>
+
+<div id="outline-container-org5fadd74" class="outline-3">
+<h3 id="org5fadd74"><span class="section-number-3">3.1.</span> Table 1. Relationship abbreviation</h3>
+<div class="outline-text-3" id="text-3-1">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Discrete</th>
+<th scope="col" class="org-left">Continuous</th>
+<th scope="col" class="org-left">shorthand</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">Binomial</td>
+<td class="org-left">Poisson</td>
+<td class="org-left">BP</td>
+</tr>
+
+<tr>
+<td class="org-left">Negative Binomial</td>
+<td class="org-left">Gamma</td>
+<td class="org-left">NG</td>
+</tr>
+
+<tr>
+<td class="org-left">Geometric</td>
+<td class="org-left">Exponential</td>
+<td class="org-left">GE</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org84415c1" class="outline-2">
+<h2 id="org84415c1"><span class="section-number-2">4.</span> Continuous distribution</h2>
+<div class="outline-text-2" id="text-4">
+</div>
+<div id="outline-container-orgbbb59aa" class="outline-3">
+<h3 id="orgbbb59aa"><span class="section-number-3">4.1.</span> Exponential distribution</h3>
+<div class="outline-text-3" id="text-4-1">
+<p>
+The probability density function (pdf) of an exponential distribution is
+</p>
+\begin{align}
+f(x;\lambda) = \left\{ \begin{array}{rcl}
+         \lambda e^{ -\lambda x } & x \geq 0 \\
+           0  & x < 0
+                \end{array}\right
+\end{align}
+<p>
+Or,
+</p>
+\begin{align}
+f(x;\lambda) = \left\{ \begin{array}{rcl}
+         \frac{1}{\beta} e^{ - x/\beta} & x \geq 0 \\
+           0  & x < 0
+                \end{array}\right
+\end{align}
+<p>
+where \(\lambda\) is rate parameter, \(\beta\) is scale parameter.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org4d5e914" class="outline-3">
+<h3 id="org4d5e914"><span class="section-number-3">4.2.</span> Gamma distribution</h3>
+<div class="outline-text-3" id="text-4-2">
+<p>
+Let \(t = \beta x\),
+</p>
+<p>
+the probability density function is
+</p>
+\begin{align}
+f(x;\alpha,\beta) = \left\{ \begin{array}{rcl}
+         \frac{\beta^{\alpha}}{\Gamma{(\alpha)}} x^{\alpha -1} e^{-\beta x} & x \geq 0 \\
+           0  & x < 0
+    \end{array}\right
+\end{align}
+<p>
+where \(\alpha\) is shape parameter and \(\beta\) is rate parameter.
+</p>
+</div>
+</div>
+
+<div id="outline-container-orge8d27ed" class="outline-3">
+<h3 id="orge8d27ed"><span class="section-number-3">4.3.</span> Normal distribution</h3>
+<div class="outline-text-3" id="text-4-3">
+</div>
+<div id="outline-container-org3238a70" class="outline-4">
+<h4 id="org3238a70"><span class="section-number-4">4.3.1.</span> The derivative of normal distribution (Ref: <a href="https://math.stackexchange.com/questions/384893/how-was-the-normal-distribution-derived/385427#385427?newreg=3bf27de39aeb420ba221d562d38c5ccd">Tim</a> )</h4>
+<div class="outline-text-4" id="text-4-3-1">
+<p>
+Suppose I throw a dart into a dartboard. I aim at the centre of the board (0,0) but I&rsquo;m not all that good with darts so the dart lands in a random position (X,Y) which has a joint density function \(f:\mathbb R^2\to\mathbb R^+\).
+Let&rsquo;s make two assumptions about the way I play darts.
+</p>
+
+<ul class="org-ul">
+<li>The density is rotationally invariant so the distribution of where my dart lands only depends on the distance of the dart to the centre.</li>
+<li><p>
+The random variables \(X\) and \(Y\) are independent, how much I miss left and right makes no difference to the distribution of how much I miss up and down.
+</p>
+
+<p>
+So by assumption one and Pythagoras I must be able to express the density
+</p>
+\begin{align}
+ f(x,y) = g(x^2 + y^2).
+\end{align}
+<p>
+Now as the random variable \(X\) and \(Y\) are independent and identically distributed I must be able to express
+</p>
+\begin{align}
+f(x,y) \propto f(x,0) f(0,y)
+\end{align}
+<p>
+Combining these assumptions we get that for every pair (x,y), we have
+</p>
+\begin{align}
+ g(x^2 + y^2) \propto g(x^2) g(y^2).
+\end{align}
+<p>
+This means that \(g\) must be an exponential function
+</p>
+\begin{align}
+ g(t) = Ae^{-Bt}
+\end{align}
+<p>
+So \(A\) will be some normalising constant. \(B\) somehow reflects the units I&rsquo;m measuring in. ( So if I measure the distance in cm \(B\) will be 10 times as big as if I measured in mm). \(B\) must be negative because the density should be a decreasing function of distance(I&rsquo;m not that bad at darts).
+</p>
+
+<p>
+So to work out \(A\), I need to integrate \(f(.,.)\) over \(\mathbb{R}^2\) a quick change of coordinates and
+</p>
+\begin{align}
+\iint_{\mathbb{R}} f(x,y)dxdy = 2\pi \int^{\infty}_{0} tg(t)dt = \frac{2\pi}{B^2}
+\end{align}
+<p>
+So we should set \(A = \frac{B^2}{2\pi}\) it&rsquo;s convenient to choose \(B\) in terms of the standart deviation, so we set \(B = \frac{1}{2\sigma}\) and \(A = \frac{1}{2\pi\sigma^2}\).
+So if I set \(\tilde{f}(x) = \frac{1}{\sqrt(2\pi)\sigma}e^{-\frac{x^2}{2\sigma}}\) then \(f(x,y) = \tilde{f}(x) \tilde{f}(y)\).
+</p>
+
+<p>
+So the \(e\) comes from the fact I wanted my \(X\) and \(Y\) coordinates to be independent and the \(\pi\) comes from the fact that I wanted rotational invariance so I&rsquo;m integrating over a circle.
+</p></li>
+</ul>
+
+<p>
+The interesting thing happens if I throw two darts. Suppose I throw my first dart aiming at (0,0) which lands at (\(X_1\),\(Y_1\)), I aim my next dart at the first dart, so this one lands at (\(X_2\),\(Y_2\)) with \(X_2=X_1 + X\) and \(X_2=Y_1+Y\).
+</p>
+
+<p>
+So the position of the second dart is the sum of the two errors. But my sum is still rotationally invariant and the variables \(X_2\) and \(Y_2\) are still independent, so (\(X_2\),\(Y_2\)) satisfies my two assumptions.
+</p>
+
+<p>
+That means that when I add independent normal distributions together I get another normal distribution.
+</p>
+
+<p>
+It&rsquo;s this property that makes it so useful, because if I take the average of a very long sequence of random variables I should get something that&rsquo;s the same shape no matter how long my sequence is and taking a sequence twice as long is like adding the two sequences together. It&rsquo;s this property of the normal distribution that makes it so useful.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org7aef59d" class="outline-4">
+<h4 id="org7aef59d"><span class="section-number-4">4.3.2.</span> Other useful materials</h4>
+<div class="outline-text-4" id="text-4-3-2">
+<p>
+<a href="https://www.maa.org/sites/default/files/pdf/upload_library/22/Allendoerfer/stahl96.pdf">The evolution of the normal distribution</a>
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org2a0942c" class="outline-3">
+<h3 id="org2a0942c"><span class="section-number-3">4.4.</span> \(\chi^2\) distribution</h3>
+<div class="outline-text-3" id="text-4-4">
+<p>
+The \(\chi^2\) distribution is a special case of the gamma distribution, as a \(\chi^2\) random variable with \(n\) degrees of freedom follows a gamma distribution with shape parameter \(\alpha = n/2\) and \(\beta = 1/2\), namely, \(\chi^2 \sim Gamma(n/2,1/2)\), giving the density function as
+</p>
+\begin{align}
+f(x;\alpha,\beta) = \left\{ \begin{array}{rcl}
+         \frac{2^{-n/2}}{\Gamma{(n/2)}} x^{n/2 -1} e^{-1/2 x} & x \geq 0 \\
+           0  & x < 0
+    \end{array}\right
+\end{align}
+</div>
+</div>
+
+<div id="outline-container-org969641d" class="outline-3">
+<h3 id="org969641d"><span class="section-number-3">4.5.</span> The relationship between normal and \(\chi^2\) distribution</h3>
+<div class="outline-text-3" id="text-4-5">
+<p>
+Firstly, we need prove \(\Gamma(1/2) = \sqrt{\pi}\) (Ref: <a href="https://onlinehw.math.ksu.edu/math340book/chap3/gamma.php#:~:text=So%20the%20Gamma%20function%20is,%2F2">The Gamma Function</a>)
+</p>
+\begin{align}
+\Gamma(1/2)^2 &= \left(\int_0^{\infty}t^{-1/2}e^{-t}\,dt\right)^2 \\
+&= \left(2\int_0^{\infty}e^{-x^2}\,dx\right)^2 && \text{let $t = x^2$} \\
+&= \left(\int_{-\infty}^{\infty}e^{-x^2}\,dx\right)^2 && \text{from (0,$\infty$) to (-$\infty$,+$\infty$)} \\
+&= \left(\int_{-\infty}^{\infty}e^{-x^2}\,dx\right)\left(\int_{-\infty}^{\infty}e^{-y^2}\,dy\right) \\
+&= \int_{-\infty}^{\infty}\int_{-\infty}^{\infty}e^{-x^2}e^{-y^2}\,dxdy \\
+&= \int_{-\infty}^{\infty}\int_{-\infty}^{\infty}e^{-(x^2+y^2)}\,dxdy \\
+&= \int_{0}^{2\pi}\int_{0}^{\infty}e^{-r^2}\,rdrd\theta  && \text{let $x= r \cdot \cos(\theta)$ and $y= r \cdot \sin(\theta)
+$}   \\
+&= \frac12\int_{0}^{2\pi}\int_{0}^{\infty}e^{-u}\,dud\theta \tag{f} \\
+&= \frac12\int_{0}^{2\pi}\left.-e^{-u}\right|_0^{\infty}\,d\theta \\
+&= \frac12\int_{0}^{2\pi}\,d\theta \\
+&= \pi
+\end{align}
+<p>
+Secondly, we need to find the pdf of \(X^2\) (Ref: <a href="https://math.stackexchange.com/questions/71537/derivation-of-chi-squared-pdf-with-one-degree-of-freedom-from-normal-distributio">Normal to Chi</a>)
+</p>
+
+<p>
+If \(X \sim \mathcal{N}(0,1)\), then the pdf of \(X\) is
+</p>
+\begin{align}
+\varphi(x) = \frac{1}{\sqrt{2\pi}} e^{-x^2/2}
+\end{align}
+<p>
+Let \(f\) be the pdf of \(X^2\). Then,
+</p>
+\begin{align}
+f(x) & = \frac{d}{dx} \Pr(X^2 \le x)= \frac{d}{dx} \Pr(-\sqrt{x}\le X\le\sqrt{x}) \\
+& = \frac{d}{dx} \frac{1}{\sqrt{2\pi}} \int_{-\sqrt{x}}^{\sqrt{x}} e^{-u^2/2} \;du  \\
+& = \frac{2}{\sqrt{2\pi}}\frac{d}{dx} \int_0^{\sqrt{x}}  e^{-u^2/2} \;du \\
+& = \frac{2}{\sqrt{2\pi}} e^{-\sqrt{x}^2/2} \frac{d}{dx} \sqrt{x} = \frac{2}{\sqrt{2\pi}} e^{-x/2} \frac{1}{2\sqrt{x}}  = \frac{e^{-x/2}}{\sqrt{2\pi x}} \\
+& = \frac{2^{-1/2}}{\Gamma{(1/2)}} x^{\frac12 - 1}e^{-x/2} \sim Gamma(1/2,1/2)
+\end{align}
+</div>
+</div>
+
+<div id="outline-container-org3c16232" class="outline-3">
+<h3 id="org3c16232"><span class="section-number-3">4.6.</span> Noncentral \(\chi^2\) distribution</h3>
+</div>
+
+<div id="outline-container-orgb664fb6" class="outline-3">
+<h3 id="orgb664fb6"><span class="section-number-3">4.7.</span> Wishart distribution</h3>
+</div>
+</div>
+
+<div id="outline-container-org7269d1b" class="outline-2">
+<h2 id="org7269d1b"><span class="section-number-2">5.</span> Discrete distribution</h2>
+<div class="outline-text-2" id="text-5">
+</div>
+<div id="outline-container-orgfb2d077" class="outline-3">
+<h3 id="orgfb2d077"><span class="section-number-3">5.1.</span> Bernoulli distribution \(X \sim Bernoulli(p)\)</h3>
+<div class="outline-text-3" id="text-5-1">
+<p>
+Bernoulli distribution is used to indicate that the random variable \(X\) has the Bernoulli distribution with parameter \(p\), where \(0 < p < 1\). A Bernoulli random variable \(X\) with success probability \(p\) has probability mass function
+</p>
+<p>
+where \(0 < p < 1\). The Bernoulli distribution is associated with the notion of a \(Bernoulli trial\), which is an experiment with two outcomes, generically referred to as \(success\)(x = 1) and \(failure\)(x = 0).
+</p>
+</div>
+</div>
+<div id="outline-container-org6000f6a" class="outline-3">
+<h3 id="org6000f6a"><span class="section-number-3">5.2.</span> Binomial distribution \(X \sim Binomial(n,p)\)</h3>
+<div class="outline-text-3" id="text-5-2">
+<p>
+The binomial distribution models the number of successes in \(n\) mutually independent Bernoulli trials, each with probability of success \(p\). The random variable \(X \sim binomial(n,p)\) has probability mass function
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgaf1f3a7" class="outline-3">
+<h3 id="orgaf1f3a7"><span class="section-number-3">5.3.</span> Possion distribution</h3>
+<div class="outline-text-3" id="text-5-3">
+<p>
+A Poisson random variable \(X\) with scale parameter \(\mu\) has probability mass function
+</p>
+<p>
+The Poisson distribution can be used to approximate the binomial distribution when \(n\) is large and \(p\) is small. Besides, it can be also used to model the number of events in an interval associated with a process that evolves randomly over space or time. Applications include the number of typographical errors in a book, the number of customers arriving in an hour.
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org38b9686" class="outline-2">
+<h2 id="org38b9686"><span class="section-number-2">6.</span> P value distribution</h2>
+<div class="outline-text-2" id="text-6">
+<p>
+<a href="https://en.wikipedia.org/wiki/Order_statistic#:~:text=Order%20statistics%20sampled%20from%20an%20uniform%20distribution,-In%20this%20section&amp;text=that%20is%2C%20the%20kth%20order,a%20beta%2Ddistributed%20random%20variable.&amp;text=and%20the%20result%20follows.,%2F%20(n%20%2B%201)">ordered statistics</a>, <a href="https://genome.sph.umich.edu/wiki/Code_Sample:_Generating_QQ_Plots_in_R">QQ plot</a>
+</p>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="author">Author: Shouye Liu</p>
+<p class="date">Created: 2023-05-25 Thu 17:01</p>
+</div>
+</body>
+</html>
